@@ -1,3 +1,4 @@
+
 import { CoursesService } from './../services/courses.service';
 import {Component, effect, inject, signal} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
@@ -26,7 +27,6 @@ export class EditCourseDialogComponent {
   courseService = inject(CoursesService)
   category = signal<CourseCategory>("BEGINNER");
 
-
     fb = inject(FormBuilder)
     form = this.fb.group({
     title: [''],
@@ -53,6 +53,7 @@ export class EditCourseDialogComponent {
   }
   async onSave(){
     const courseProps =  this.form.value as Partial<Course>;
+    courseProps.category = this.category();
    if (this.data?.mode === "update") {
       await this.saveCourse(this.data?.course!.id, courseProps);
     }

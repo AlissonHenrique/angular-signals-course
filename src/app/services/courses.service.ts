@@ -25,4 +25,5 @@ async loadAllCourses():Promise<Course[]> {
   createCourse(value:any){
 
   }
+  getCourseById(value:any){}
 }

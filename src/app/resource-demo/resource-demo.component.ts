@@ -8,7 +8,7 @@ import {Lesson} from "../models/lesson.model";
   selector: 'resource-demo',
   templateUrl: './resource-demo.component.html',
   styleUrls: ['./resource-demo.component.scss'],
-  imports: [MatProgressSpinner]
+
 })
 export class ResourceDemoComponent {
 

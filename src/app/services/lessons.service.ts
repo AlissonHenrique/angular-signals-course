@@ -13,4 +13,8 @@ export class LessonsService {
 
   env = environment;
 
+
+  loadLessons(value:any){
+
+  }
 }

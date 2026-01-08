@@ -1,10 +1,9 @@
 
-@import "../../styles/button";
-@import "../../styles/forms";
+@use "../../styles/button" as button;
+@use "../../styles/forms" as form;
 
-@include buttonStyles();
-@include formStyles();
-
+@include button.buttonStyles();
+@include form.formStyles();
 .demo-container {
   max-width: 400px;
   margin: 0 auto;

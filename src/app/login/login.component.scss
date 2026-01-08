@@ -1,9 +1,8 @@
-@import "../../styles/forms";
-@import "../../styles/button";
+@use "../../styles/forms" as form;
+@use "../../styles/button" as button;
 
-@include formStyles();
-@include buttonStyles();
-
+@include form.formStyles();
+@include button.buttonStyles();
 .login-form {
   display: flex;
   flex-direction: column;
