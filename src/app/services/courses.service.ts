@@ -20,10 +20,16 @@ async loadAllCourses():Promise<Course[]> {
   }
 
   async saveCourse(courseId:string, changes: Partial<Course>) {
-
+    const course$ = this.http.put<Course>(`${this.env.apiRoot}/courses/${courseId}`, changes);
+    return await firstValueFrom(course$);
   }
-  createCourse(value:any){
-
+  async createCourse(course:Partial<Course>):Promise<Course> {
+    const course$ = this.http.post<Course>(`${this.env.apiRoot}/courses`, course);
+    return await firstValueFrom(course$);
   }
-  getCourseById(value:any){}
+  async getCourseById(courseId:string){
+    const course$ = this.http.get<Course>(`${this.env.apiRoot}/courses/${courseId}`);
+
+    return await firstValueFrom(course$);
+  }
 }

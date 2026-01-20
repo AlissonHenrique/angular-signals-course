@@ -1,4 +1,4 @@
-import {Component, computed, effect,  inject, Injector, signal} from '@angular/core';
+import {Component, computed, effect,  ElementRef,  inject, Injector, signal, viewChild} from '@angular/core';
 import {CoursesService} from "../services/courses.service";
 import {Course, sortCoursesBySeqNo} from "../models/course.model";
 import {MatTab, MatTabGroup} from "@angular/material/tabs";
@@ -10,7 +10,7 @@ import {toObservable, toSignal, outputToObservable, outputFromObservable} from "
 import { CoursesServiceWithFetch } from '../services/courses-fetch.service';
 import {openEditCourseDialog} from "../edit-course-dialog/edit-course-dialog.component";
 import { LoadingService } from '../loading/loading.service';
-
+import {MatTooltip} from "@angular/material/tooltip";
 
 type Counter={
   value:number
@@ -42,9 +42,20 @@ advancedCourses = computed(() => {
  return  this.#courses().filter(course => course.category === "ADVANCED")
 });
 
+beginnersList = viewChild('beginnersList',
+  {
+    read: MatTooltip
+  }
+)
   constructor() {
     this.loadCourses().then(() => console.log(`All courses loaded:`, this.#courses()));
+
+    effect(() => {
+      console.log('beginnersList', this.beginnersList())
+    })
   }
+
+
  async loadCourses() {
     try {
 

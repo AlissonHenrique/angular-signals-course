@@ -15,10 +15,7 @@ export const routes: Routes = [
     component: HomeComponent,
     canActivate: [isUserAuthenticated]
   },
-  {
-    path: "login",
-    component: LoginComponent
-  },
+
    {
     'path': 'courses/:courseId',
     component: CourseComponent,
@@ -27,6 +24,10 @@ export const routes: Routes = [
       course: courseResolver,
       lessons: courseLessonsResolver
     }
+  },
+   {
+    path: "login",
+    component: LoginComponent
   },
   {
     path: "lessons",
